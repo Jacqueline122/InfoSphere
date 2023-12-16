@@ -7,6 +7,7 @@ from blueprints.auth import bp as auth_bp
 
 
 app = Flask(__name__)
+# Binding configuration file
 app.config.from_object(config)
 
 db.init_app(app)
