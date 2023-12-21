@@ -10,7 +10,7 @@ class RegisterForm(wtforms.Form):
     captcha = wtforms.StringField(validators=[Length(min=4, max=4, message="code format error")])
     username = wtforms.StringField(validators=[Length(min=3, max=20, message="username format error")])
     password = wtforms.StringField(validators=[Length(min=6, max=20, message="password format error")])
-    password_confirm = wtforms.StringField(validators=[EqualTo("password")])
+    password_confirm = wtforms.StringField(validators=[EqualTo("password", message="passwords must match")])
 
     # self design
     # 1. The email is registered or not
