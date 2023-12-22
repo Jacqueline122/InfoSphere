@@ -31,3 +31,7 @@ class RegisterForm(wtforms.Form):
         #     db.session.delete(captcha_model)
         #     db.session.commit()
 
+
+class LoginForm(wtforms.Form):
+    email = wtforms.StringField(validators=[Email(message="email format error")])
+    password = wtforms.StringField(validators=[Length(min=6, max=20, message="password format error")])
