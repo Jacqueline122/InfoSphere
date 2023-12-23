@@ -57,6 +57,12 @@ def register():
             return redirect(url_for("auth.register"))
 
 
+@bp.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
+
+
 @bp.route("/captcha/email")
 def captcha_email():
     email = request.args.get("email")
