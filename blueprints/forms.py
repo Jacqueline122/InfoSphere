@@ -35,3 +35,8 @@ class RegisterForm(wtforms.Form):
 class LoginForm(wtforms.Form):
     email = wtforms.StringField(validators=[Email(message="email format error")])
     password = wtforms.StringField(validators=[Length(min=6, max=20, message="password format error")])
+
+
+class QuestionForm(wtforms.Form):
+    title = wtforms.StringField(validators=[Length(min=3, max=100, message="title format error")])
+    content = wtforms.StringField(validators=[Length(min=3, max=200, message="content format error")])
