@@ -16,32 +16,27 @@
             <p class="question-content">{{ question.content}}</p>
             <hr>
             <h4 class="comment-group-title">Comments (2):</h4>
-            <form action="#" method="post">
+            <form action="{{ url_for('qa.public_answer') }}" method="post">
                 <div class="form-group">
                     <input type="text" placeholder="Please enter a comment" name="content" class="form-control">
+                    <input type="hidden" name="question_id" value = "{{ question.id }}">
                 </div>
                 <div class="form-group" style="text-align: right;">
                     <button class="btn btn-primary">Comment</button>
                 </div>
             </form>
             <ul class="comment-group">
+                {% for answer in question.answers %}
                 <li>
                     <div class="user-info">
-                        <img class="avatar" src="./static/images/avatar.jpg" alt="">
-                        <span class="username">Rose, the Outlaw</span>
-                        <span class="create-time">Dec 30, 2023</span>
+                        <img class="avatar" src="{{ url_for('static', filename='images/avatar.jpg') }}" alt="">
+                        <span class="username">{{ answer.author.username}}</span>
+                        <span class="create-time">{{ answer.create_time}}</span>
                     </div>
-                    <p class="comment-content">Well said!</p>
+                    <p class="comment-content">{{ answer.content}}</p>
                 </li>
 
-                <li>
-                    <div class="user-info">
-                        <img class="avatar" src="./static/images/avatar.jpg" alt="">
-                        <span class="username">Jack, Our Lawyer</span>
-                        <span class="create-time">Dec 30, 2023</span>
-                    </div>
-                    <p class="comment-content">I disagree!</p>
-                </li>
+                {% endfor %}
             </ul>
         </div>
         <div class="col"></div>
