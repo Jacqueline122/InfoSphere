@@ -15,7 +15,7 @@
             <hr>
             <p class="question-content">{{ question.content}}</p>
             <hr>
-            <h4 class="comment-group-title">Comments (2):</h4>
+            <h4 class="comment-group-title">Comments({{ question.answers|length }}):</h4>
             <form action="{{ url_for('qa.public_answer') }}" method="post">
                 <div class="form-group">
                     <input type="text" placeholder="Please enter a comment" name="content" class="form-control">
