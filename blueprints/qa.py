@@ -11,7 +11,8 @@ bp = Blueprint("qa", __name__, url_prefix="/")
 # http://127.0.0.1:5000
 @bp.route("/")
 def index():
-    return "Home Page"
+    questions = QuestionModel.query.order_by(QuestionModel.create_time.desc()).all()
+    return render_template("index.html", questions=questions)
 
 
 @bp.route("/qa/public", methods=['GET', 'POST'])
@@ -31,3 +32,9 @@ def public_question():
         else:
             print(form.errors)
             return redirect(url_for("qa.public_question"))
+
+
+@bp.route("/qa/detail/<qa_id>")
+def qa_detail(qa_id):
+    question = QuestionModel.query.get(qa_id)
+    return render_template("detail.html", question=question)

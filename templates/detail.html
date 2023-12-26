@@ -1,47 +1,49 @@
 {% extends "base.html" %}
-{% block title %}InfoSphere Register{% endblock %}
-{% block head %}{% endblock %}
+{% block title %}{{ question.title}}{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">
+{% endblock %}
 {% block body %}
-<div class="row" style="margin-top: 20px;">
-            <div class="col"></div>
-            <div class="col-10" style="background-color: #fff;padding: 20px;">
-                <h3 class="page-title">How Iron Man Was Made</h3>
-                <p class="question-info">
-                    <span>Author: Tony Stark</span>
-                    <span>Date: October 30, 2022</span>
-                </p>
-                <hr>
-                <p class="question-content">This is how Tony Stark's Iron Man was made!</p>
-                <hr>
-                <h4 class="comment-group-title">Comments (2):</h4>
-                <form action="#" method="post">
-                    <div class="form-group">
-                        <input type="text" placeholder="Please enter a comment" name="content" class="form-control">
+    <div class="row" style="margin-top: 20px;">
+        <div class="col"></div>
+        <div class="col-10" style="background-color: #fff;padding: 20px;">
+            <h3 class="page-title">{{ question.title}}</h3>
+            <p class="question-info">
+                <span>Author: {{ question.author.username}}</span>
+                <span>Date: {{ question.create_time}}</span>
+            </p>
+            <hr>
+            <p class="question-content">{{ question.content}}</p>
+            <hr>
+            <h4 class="comment-group-title">Comments (2):</h4>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <input type="text" placeholder="Please enter a comment" name="content" class="form-control">
+                </div>
+                <div class="form-group" style="text-align: right;">
+                    <button class="btn btn-primary">Comment</button>
+                </div>
+            </form>
+            <ul class="comment-group">
+                <li>
+                    <div class="user-info">
+                        <img class="avatar" src="./static/images/avatar.jpg" alt="">
+                        <span class="username">Rose, the Outlaw</span>
+                        <span class="create-time">Dec 30, 2023</span>
                     </div>
-                    <div class="form-group" style="text-align: right;">
-                        <button class="btn btn-primary">Comment</button>
-                    </div>
-                </form>
-                <ul class="comment-group">
-                    <li>
-                        <div class="user-info">
-                            <img class="avatar" src="./static/images/avatar.jpg" alt="">
-                            <span class="username">Rose, the Outlaw</span>
-                            <span class="create-time">October 30, 2022</span>
-                        </div>
-                        <p class="comment-content">Well said!</p>
-                    </li>
+                    <p class="comment-content">Well said!</p>
+                </li>
 
-                    <li>
-                        <div class="user-info">
-                            <img class="avatar" src="./static/images/avatar.jpg" alt="">
-                            <span class="username">Jack, Our Lawyer</span>
-                            <span class="create-time">October 30, 2022</span>
-                        </div>
-                        <p class="comment-content">I, Jack, disagree!</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="col"></div>
+                <li>
+                    <div class="user-info">
+                        <img class="avatar" src="./static/images/avatar.jpg" alt="">
+                        <span class="username">Jack, Our Lawyer</span>
+                        <span class="create-time">Dec 30, 2023</span>
+                    </div>
+                    <p class="comment-content">I disagree!</p>
+                </li>
+            </ul>
         </div>
-{%  endblock %}
+        <div class="col"></div>
+    </div>
+{% endblock %}
